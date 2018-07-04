@@ -1,0 +1,130 @@
+{
+  "musicians": [
+    {
+	  "id": "1",
+      "name": "Edward Sheeran",
+      "age": "27",
+      "genre": "pop",
+      "careerStartYear": "2006",
+      "albums": [
+        {
+		  "id": "1",
+          "name": "Plus",
+          "releaseYear": "2011",
+          "tracks": [
+            {
+			  "id": "1",
+              "name": "The A Team",
+              "duration": "04:18",
+              "isFavorite": "false",
+              "isListened": "false",
+              "rating": "0"
+            },
+            {
+			  "id": "2",
+              "name": "Drunk",
+              "duration": "03:20",
+              "isFavorite": "false",
+              "isListened": "false",
+              "rating": "0"
+            },
+            {
+			  "id": "3",
+              "name": "U.N.I.",
+              "duration": "03:48",
+              "isFavorite": "false",
+              "isListened": "false",
+              "rating": "0"
+            },
+            {
+			  "id": "4",
+              "name": "Grade 8",
+              "duration": "02:59",
+              "isFavorite": "false",
+              "isListened": "false",
+              "rating": "0"
+            }
+          ]
+        },
+        {
+		  "id": "2",
+          "name": "Multiply",
+          "releaseYear": "2014",
+          "tracks": [
+            {
+			  "id": "5",
+              "name": "One",
+              "duration": "04:13",
+              "isFavorite": "false",
+              "isListened": "false",
+              "rating": "0"
+            },
+            {
+			  "id": "6",
+              "name": "I'm a Mess",
+              "duration": "04:06",
+              "isFavorite": "false",
+              "isListened": "false",
+              "rating": "0"
+            },
+            {
+			  "id": "7",
+              "name": "Nina",
+              "duration": "03:43",
+              "isFavorite": "false",
+              "isListened": "false",
+              "rating": "0"
+            },
+            {
+			  "id": "8",			
+              "name": "Photograph",
+              "duration": "04:17",
+              "isFavorite": "false",
+              "isListened": "false",
+              "rating": "0"
+            }
+          ]
+        },
+        {
+		  "id": "3",
+          "name": "Divide",
+          "releaseYear": "2017",
+          "tracks": [
+            {
+			  "id": "9",
+              "name": "Erazer",
+              "duration": "03:47",
+              "isFavorite": "false",
+              "isListened": "false",
+              "rating": "0"
+            },
+            {
+			  "id": "10",
+              "name": "Castle on the Hill",
+              "duration": "04:21",
+              "isFavorite": "false",
+              "isListened": "false",
+              "rating": "0"
+            },
+            {
+			  "id": "11",
+              "name": "Dive",
+              "duration": "03:58",
+              "isFavorite": "false",
+              "isListened": "false",
+              "rating": "0"
+            },
+            {
+			  "id": "12",
+              "name": "Shape of You",
+              "duration": "03:53",
+              "isFavorite": "false",
+              "isListened": "false",
+              "rating": "0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
