@@ -1,23 +1,31 @@
-﻿<h2>Ваша коллекция:</h2>
+﻿<h2>Your collection:</h2>
 <div *ngIf="musList">
     <ul class="list-unstyled musicians">
         <li class="row" *ngFor="let mus of musList">
             <div class="col-6 text-left">
-                {{ mus.name }}, {{ mus.age }}
+                {{ mus.name }}, {{ mus.age }} y.o.
             </div>
             <div class="col-6 text-right">
-                {{ mus.careerStartYear }}
+                Started in {{ mus.careerStartYear }}
             </div>
             <div class="col-12">
                 <ul class="list-unstyled albums">
                     <li class="row" *ngFor="let al of mus.albums">
                         <div class="text-left col-12">{{ al.name }} ({{al.releaseYear}})</div>
-                        <ul class="list-unstyled tracks">
-                            <li *ngFor="let tr of al.tracks">{{ tr.name }} - {{ tr.duration }}</li>
-                        </ul>
                     </li>
                 </ul>
             </div>
         </li>
+    </ul>
+</div>
+<div>
+    <ul class="list-unstyled">
+        <template *ngFor="let mus of musList">
+            <template *ngFor="let al of mus.albums">
+                <template *ngFor="let trk of al.tracks">
+                    <li class="row">{{ trk.name }} - {{ trk.duration}}</li>
+                </template>
+            </template>
+        </template>
     </ul>
 </div>

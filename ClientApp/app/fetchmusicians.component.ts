@@ -20,6 +20,18 @@ export class FetchEmployeeComponent implements OnInit {
         )
     }
 
+    markAsListened(id): void {
+
+    }
+
+    markAsFavorite(id): void {
+
+    }
+
+    like(id): void {
+
+    }
+
     ngOnInit() {
         this.getMusicians();
     }
