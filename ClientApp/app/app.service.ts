@@ -5,6 +5,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw'; 
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs'; 
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class MusicianService {
@@ -15,8 +16,8 @@ export class MusicianService {
     }
     
     public getMusiciansList() {
-        return this._http.get(this.myAppUrl + 'api/getMusicians').map(res => res.json())
-            .catch(this.errorHandler);
+        return this._http.get(this.myAppUrl + 'api/getMusicians').pipe(map((response: any) => response.json()))
+            .pipe(catchError(this.errorHandler));
     }
 
     errorHandler(error: Response) {

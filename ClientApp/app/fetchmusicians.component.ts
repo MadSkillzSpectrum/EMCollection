@@ -15,7 +15,7 @@ export class FetchEmployeeComponent {
     }
 
     getMusicians() {
-        this._service.getMusiciansList.subscribe(
+        this._service.getMusiciansList().subscribe(
             data => this.musList = data
         )
     }
@@ -32,6 +32,7 @@ interface MusicianData {
 interface AlbumData {
     id: number;
     name: string;
+    releaseDate: number;
     tracks: TrackData[];
 }
 
@@ -39,4 +40,7 @@ interface TrackData {
     id: number;
     name: string;
     duration: string;
+    isFavorite: boolean;
+    isListented: boolean;
+    rating: number;
 }

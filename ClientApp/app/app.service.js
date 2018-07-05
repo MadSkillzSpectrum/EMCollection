@@ -16,26 +16,25 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs';
-var MusicianService = /** @class */ (function () {
-    function MusicianService(_http, baseUrl) {
+import { map } from 'rxjs/operators';
+let MusicianService = class MusicianService {
+    constructor(_http, baseUrl) {
         this._http = _http;
         this.myAppUrl = "";
         this.myAppUrl = baseUrl;
     }
-    MusicianService.prototype.getCityList = function () {
-        return this._http.get(this.myAppUrl + 'api/getMusicians').map(function (res) { return res.json(); })
-            .catch(this.errorHandler);
-    };
-    MusicianService.prototype.errorHandler = function (error) {
+    getMusiciansList() {
+        return this._http.get(this.myAppUrl + 'api/getMusicians').pipe(map((response) => response.json()));
+    }
+    errorHandler(error) {
         console.log(error);
         return Observable.throw(error);
-    };
-    MusicianService = __decorate([
-        Injectable(),
-        __param(1, Inject('BASE_URL')),
-        __metadata("design:paramtypes", [Http, String])
-    ], MusicianService);
-    return MusicianService;
-}());
+    }
+};
+MusicianService = __decorate([
+    Injectable(),
+    __param(1, Inject('BASE_URL')),
+    __metadata("design:paramtypes", [Http, String])
+], MusicianService);
 export { MusicianService };
 //# sourceMappingURL=app.service.js.map

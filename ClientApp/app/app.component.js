@@ -5,9 +5,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { Component } from '@angular/core';
-import { TreeviewItem } from 'ngx-treeview';
-var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+let AppComponent = class AppComponent {
+    constructor() {
         this.name = '';
         this.items = [];
         this.config = {
@@ -19,19 +18,17 @@ var AppComponent = /** @class */ (function () {
             decoupleChildFromParent: false
         };
     }
-    AppComponent.prototype.ngOnInit = function () {
-        this.items = [
+    ngOnInit() {
+        /*this.items = [
             new TreeviewItem({ text: "test", value: 1 }),
-            new TreeviewItem({ text: "test2", value: 2 })
-        ];
-    };
-    AppComponent = __decorate([
-        Component({
-            selector: 'app-root',
-            templateUrl: 'app.component.html'
-        })
-    ], AppComponent);
-    return AppComponent;
-}());
+            new TreeviewItem({ text: "test2", value: 2 })];*/
+    }
+};
+AppComponent = __decorate([
+    Component({
+        selector: 'app-root',
+        templateUrl: 'app.component.html'
+    })
+], AppComponent);
 export { AppComponent };
 //# sourceMappingURL=app.component.js.map

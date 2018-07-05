@@ -23,6 +23,6 @@ export class AppComponent {
         /*this.items = [
             new TreeviewItem({ text: "test", value: 1 }),
             new TreeviewItem({ text: "test2", value: 2 })];*/
-        this.items = MusicianService.
+   
     }
 }
