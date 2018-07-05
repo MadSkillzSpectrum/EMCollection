@@ -18,12 +18,13 @@ let FetchEmployeeComponent = class FetchEmployeeComponent {
         this._service = _service;
     }
     getMusicians() {
-        this._service.getMusiciansList.subscribe(data => this.musList = data);
+        this._service.getMusiciansList().subscribe(data => this.musList = data);
     }
 };
 FetchEmployeeComponent = __decorate([
     Component({
-        templateUrl: './fetchemployee.component.html'
+        selector: 'musicians',
+        templateUrl: './fetchmusicians.component.html'
     }),
     __metadata("design:paramtypes", [Http, Router, MusicianService])
 ], FetchEmployeeComponent);

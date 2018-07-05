@@ -4,7 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MusicianService } from './app.service'
 
 @Component({
-    templateUrl: './fetchemployee.component.html'
+    selector: 'musicians',
+    templateUrl: './fetchmusicians.component.html'
 })
 
 export class FetchEmployeeComponent {

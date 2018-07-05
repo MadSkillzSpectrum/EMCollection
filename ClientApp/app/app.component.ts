@@ -1,6 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { TreeviewItem, TreeviewConfig} from 'ngx-treeview';
 import { MusicianService } from './app.service';
+import { FetchEmployeeComponent } from './fetchmusicians.component';
 
 @Component({
     selector: 'app-root',

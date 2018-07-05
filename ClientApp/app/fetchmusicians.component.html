@@ -1,0 +1,14 @@
+﻿<table class='table' *ngIf="musList">
+    <thead>
+        <tr>
+            <th>MusicianId</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of empList">
+            <td>{{ emp.id }}</td>
+            <td>{{ emp.name }}</td>
+        </tr>
+    </tbody>
+</table>

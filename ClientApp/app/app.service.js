@@ -16,7 +16,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 let MusicianService = class MusicianService {
     constructor(_http, baseUrl) {
         this._http = _http;
@@ -24,7 +24,8 @@ let MusicianService = class MusicianService {
         this.myAppUrl = baseUrl;
     }
     getMusiciansList() {
-        return this._http.get(this.myAppUrl + 'api/getMusicians').pipe(map((response) => response.json()));
+        return this._http.get(this.myAppUrl + 'api/getMusicians').pipe(map((response) => response.json()))
+            .pipe(catchError(this.errorHandler));
     }
     errorHandler(error) {
         console.log(error);
