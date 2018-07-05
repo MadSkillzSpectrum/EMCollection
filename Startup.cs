@@ -39,7 +39,16 @@ namespace EMCollection
 
             RootObject r = JsonConvert.DeserializeObject<RootObject>(System.IO.File.ReadAllText(@"data sample.json"));
             foreach (var a in r.Musicians)
+            {
+                a.Id = 0;
+                a.Albums.ForEach(b => {
+                    b.Id = 0;
+                    b.Tracks.ForEach(c=>c.Id=0);
+                    });
+
+
                 context.Add(a);
+            }
             context.SaveChanges();
 
             services.AddMvc();

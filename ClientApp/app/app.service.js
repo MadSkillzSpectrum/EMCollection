@@ -15,16 +15,16 @@ import 'rxjs-compat/add/operator/toPromise';
 import 'rxjs-compat/add/operator/catch';
 import 'rxjs-compat/add/observable/throw';
 import { Observable } from 'rxjs-compat';
-import { map, catchError } from 'rxjs/operators';
 let MusicianService = class MusicianService {
     constructor(_http) {
         this._http = _http;
         this.myAppUrl = "";
-        this.myAppUrl = "http://localhost:49679/";
+        this.myAppUrl = "http://localhost:49680/";
     }
     getMusiciansList() {
-        return this._http.get(this.myAppUrl + 'api/getMusicians').pipe(map((response) => response.json()))
-            .pipe(catchError(this.errorHandler));
+        return this._http.get(this.myAppUrl + 'api/getMusicians').toPromise().then(response => { return response.json(); });
+        //.pipe(map((response: MusicianData) => response()))
+        //.pipe(catchError(this.errorHandler));
     }
     errorHandler(error) {
         console.log(error);

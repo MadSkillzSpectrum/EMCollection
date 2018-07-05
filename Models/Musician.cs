@@ -8,10 +8,11 @@ using Newtonsoft.Json;
 
 namespace EMCollection.Models
 {
+    [JsonObject]
     public class Musician
     {
         [ScaffoldColumn(false)]
-        [JsonIgnore]
+        [JsonProperty("id")]
         public int Id { get; set; }
         [JsonProperty("name")]
         public string Name { get; set; }

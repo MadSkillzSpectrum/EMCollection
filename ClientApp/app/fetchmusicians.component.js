@@ -16,7 +16,7 @@ let FetchEmployeeComponent = class FetchEmployeeComponent {
         this._service = _service;
     }
     getMusicians() {
-        this._service.getMusiciansList().subscribe(data => this.musList = data);
+        this._service.getMusiciansList().then(data => this.musList = data);
     }
     ngOnInit() {
         this.getMusicians();

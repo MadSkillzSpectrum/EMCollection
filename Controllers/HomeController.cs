@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using EMCollection.Models;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.EntityFrameworkCore;
 
 namespace EMCollection.Controllers
 {
+    //[Route("api")]
+    [EnableCors("AllowAngularLocalHost")]
     public class HomeController : Controller
     {
         private DbEntitiesContext _context;
@@ -20,9 +24,9 @@ namespace EMCollection.Controllers
 
         [HttpGet]
         [Route("api/getMusicians")]
-        public IEnumerable<Musician> GetMusicians()
+        public string GetMusicians()
         {
-            return _context.Musicians;
+            return JsonConvert.SerializeObject(_context.Musicians.Include(a => a.Albums).ThenInclude(b => b.Tracks).ToList());
         }
 
         public IActionResult Index()

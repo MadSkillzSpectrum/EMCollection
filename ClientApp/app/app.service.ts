@@ -8,18 +8,20 @@ import 'rxjs-compat/add/observable/throw';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs-compat';
 import { map, catchError } from 'rxjs/operators';
+import { MusicianData } from './fetchmusicians.component';
 
 @Injectable()
 export class MusicianService {
     myAppUrl: string = "";
 
     constructor(private _http: Http) {
-        this.myAppUrl = "http://localhost:49679/";
+        this.myAppUrl = "http://localhost:49680/";
     }
-    
-    public getMusiciansList() {
-        return this._http.get(this.myAppUrl + 'api/getMusicians').pipe(map((response: any) => response.json()))
-            .pipe(catchError(this.errorHandler));
+
+    public getMusiciansList(): Promise<MusicianData[]> {
+        return this._http.get(this.myAppUrl + 'api/getMusicians').toPromise().then(response => { return response.json() });
+            //.pipe(map((response: MusicianData) => response()))
+            //.pipe(catchError(this.errorHandler));
     }
 
     errorHandler(error: Response) {

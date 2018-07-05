@@ -1,15 +1,25 @@
-﻿<h2>Список музыкантов:</h2>
+﻿<h2>Ваша коллекция:</h2>
 <table class='table' *ngIf="musList">
     <thead>
         <tr>
             <th>MusicianId</th>
             <th>Name</th>
+            <th>Ablums</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let emp of empList">
-            <td>{{ emp.id }}</td>
-            <td>{{ emp.name }}</td>
+        <tr *ngFor="let mus of musList">
+            <td>{{ mus.id }}</td>
+            <td>{{ mus.name }}</td>
+            <td>
+                <ul>
+                    <li *ngFor="let al of mus.albums">{{ al.name }}
+                        <ul>
+                            <li *ngFor="let tr of al.tracks">{{ tr.name }} - {{ tr.duration }}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
         </tr>
     </tbody>
 </table>

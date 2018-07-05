@@ -14,8 +14,8 @@ export class FetchEmployeeComponent implements OnInit {
 
     }
 
-    getMusicians() {
-        this._service.getMusiciansList().subscribe(
+    getMusicians(): void {
+        this._service.getMusiciansList().then(
             data => this.musList = data
         )
     }
@@ -25,7 +25,7 @@ export class FetchEmployeeComponent implements OnInit {
     }
 }
 
-interface MusicianData {
+export interface MusicianData {
     id: number;
     name: string;
     age: number;
@@ -33,14 +33,14 @@ interface MusicianData {
     albums: AlbumData[];
 }
 
-interface AlbumData {
+export interface AlbumData {
     id: number;
     name: string;
     releaseDate: number;
     tracks: TrackData[];
 }
 
-interface TrackData {
+export interface TrackData {
     id: number;
     name: string;
     duration: string;
