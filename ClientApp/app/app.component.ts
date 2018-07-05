@@ -1,5 +1,4 @@
 ﻿import { Component } from '@angular/core';
-import { TreeviewItem, TreeviewConfig} from 'ngx-treeview';
 import { MusicianService } from './app.service';
 import { FetchEmployeeComponent } from './fetchmusicians.component';
 
@@ -9,21 +8,4 @@ import { FetchEmployeeComponent } from './fetchmusicians.component';
 })
 export class AppComponent {
     name = '';
-    public items: Array<TreeviewItem> = [
-    ];
-
-    public config: TreeviewConfig = {
-        hasCollapseExpand: false,
-        hasAllCheckBox: false,
-        maxHeight: 500,
-        hasFilter: true,
-        hasDivider: false,
-        decoupleChildFromParent: false
-    };
-    ngOnInit() {
-        /*this.items = [
-            new TreeviewItem({ text: "test", value: 1 }),
-            new TreeviewItem({ text: "test2", value: 2 })];*/
-   
-    }
 }

@@ -1,6 +1,5 @@
-﻿import { Component, Inject } from '@angular/core';
+﻿import { Component, Inject, OnInit } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { Router, ActivatedRoute } from '@angular/router';
 import { MusicianService } from './app.service'
 
 @Component({
@@ -8,10 +7,10 @@ import { MusicianService } from './app.service'
     templateUrl: './fetchmusicians.component.html'
 })
 
-export class FetchEmployeeComponent {
+export class FetchEmployeeComponent implements OnInit {
     public musList: MusicianData[];
 
-    constructor(public http: Http, private _router: Router, private _service: MusicianService) {
+    constructor(public http: Http, private _service: MusicianService) {
 
     }
 
@@ -19,6 +18,10 @@ export class FetchEmployeeComponent {
         this._service.getMusiciansList().subscribe(
             data => this.musList = data
         )
+    }
+
+    ngOnInit() {
+        this.getMusicians();
     }
 }
 

@@ -8,20 +8,6 @@ import { Component } from '@angular/core';
 let AppComponent = class AppComponent {
     constructor() {
         this.name = '';
-        this.items = [];
-        this.config = {
-            hasCollapseExpand: false,
-            hasAllCheckBox: false,
-            maxHeight: 500,
-            hasFilter: true,
-            hasDivider: false,
-            decoupleChildFromParent: false
-        };
-    }
-    ngOnInit() {
-        /*this.items = [
-            new TreeviewItem({ text: "test", value: 1 }),
-            new TreeviewItem({ text: "test2", value: 2 })];*/
     }
 };
 AppComponent = __decorate([

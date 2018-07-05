@@ -9,16 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
-import { Router } from '@angular/router';
 import { MusicianService } from './app.service';
 let FetchEmployeeComponent = class FetchEmployeeComponent {
-    constructor(http, _router, _service) {
+    constructor(http, _service) {
         this.http = http;
-        this._router = _router;
         this._service = _service;
     }
     getMusicians() {
         this._service.getMusiciansList().subscribe(data => this.musList = data);
+    }
+    ngOnInit() {
+        this.getMusicians();
     }
 };
 FetchEmployeeComponent = __decorate([
@@ -26,7 +27,7 @@ FetchEmployeeComponent = __decorate([
         selector: 'musicians',
         templateUrl: './fetchmusicians.component.html'
     }),
-    __metadata("design:paramtypes", [Http, Router, MusicianService])
+    __metadata("design:paramtypes", [Http, MusicianService])
 ], FetchEmployeeComponent);
 export { FetchEmployeeComponent };
 //# sourceMappingURL=fetchmusicians.component.js.map

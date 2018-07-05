@@ -7,21 +7,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
-import { Observable } from 'rxjs';
+import 'rxjs-compat/add/observable/of';
+import 'rxjs-compat/add/operator/map';
+import 'rxjs-compat/add/operator/toPromise';
+import 'rxjs-compat/add/operator/catch';
+import 'rxjs-compat/add/observable/throw';
+import { Observable } from 'rxjs-compat';
 import { map, catchError } from 'rxjs/operators';
 let MusicianService = class MusicianService {
-    constructor(_http, baseUrl) {
+    constructor(_http) {
         this._http = _http;
         this.myAppUrl = "";
-        this.myAppUrl = baseUrl;
+        this.myAppUrl = "http://localhost:49679/";
     }
     getMusiciansList() {
         return this._http.get(this.myAppUrl + 'api/getMusicians').pipe(map((response) => response.json()))
@@ -34,8 +33,7 @@ let MusicianService = class MusicianService {
 };
 MusicianService = __decorate([
     Injectable(),
-    __param(1, Inject('BASE_URL')),
-    __metadata("design:paramtypes", [Http, String])
+    __metadata("design:paramtypes", [Http])
 ], MusicianService);
 export { MusicianService };
 //# sourceMappingURL=app.service.js.map

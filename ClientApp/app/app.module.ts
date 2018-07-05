@@ -2,12 +2,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { TreeviewModule } from 'ngx-treeview';
 import { FetchEmployeeComponent } from './fetchmusicians.component';
+import { MusicianService } from './app.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, TreeviewModule.forRoot(), FetchEmployeeComponent ],
+    imports: [BrowserModule, FormsModule, HttpModule],
     declarations: [AppComponent, FetchEmployeeComponent],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    providers: [MusicianService]
 })
 export class AppModule { }
