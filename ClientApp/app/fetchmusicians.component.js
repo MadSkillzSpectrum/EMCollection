@@ -7,13 +7,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component } from '@angular/core';
+import { Component, Pipe } from '@angular/core';
 import { Http } from '@angular/http';
 import { MusicianService } from './app.service';
 let FetchEmployeeComponent = class FetchEmployeeComponent {
     constructor(http, _service) {
         this.http = http;
         this._service = _service;
+    }
+    openAlbum(a) {
+        if (a == this.curAlbum)
+            this.curAlbum = null;
+        else
+            this.curAlbum = a;
     }
     getMusicians() {
         this._service.getMusiciansList().then(data => this.musList = data);
@@ -23,10 +29,8 @@ let FetchEmployeeComponent = class FetchEmployeeComponent {
     }
     markAsListened(id) {
         var track = this.trkList.find(a => a.id == id);
-        if (track.isListened == false) {
-            track.isListened = true;
-            this._service.setListened(track);
-        }
+        track.isListened = true;
+        this._service.setListened(track);
     }
     markAsFavorite(id) {
         var track = this.trkList.find(a => a.id == id);
@@ -57,4 +61,21 @@ FetchEmployeeComponent = __decorate([
     __metadata("design:paramtypes", [Http, MusicianService])
 ], FetchEmployeeComponent);
 export { FetchEmployeeComponent };
+let FilterPipe = class FilterPipe {
+    transform(items, searchAlbum) {
+        if (!items)
+            return [];
+        if (!searchAlbum)
+            return items;
+        return items.filter(it => {
+            return it.album == searchAlbum;
+        });
+    }
+};
+FilterPipe = __decorate([
+    Pipe({
+        name: 'filter'
+    })
+], FilterPipe);
+export { FilterPipe };
 //# sourceMappingURL=fetchmusicians.component.js.map

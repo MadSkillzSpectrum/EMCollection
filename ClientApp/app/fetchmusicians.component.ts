@@ -1,4 +1,4 @@
-﻿import { Component, Inject, OnInit } from '@angular/core';
+﻿import { Component, Inject, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { MusicianService } from './app.service'
 import { concat } from 'rxjs';
@@ -11,9 +11,17 @@ import { concat } from 'rxjs';
 export class FetchEmployeeComponent implements OnInit {
     public musList: MusicianData[];
     public trkList: TrackData[];
+    public curAlbum: AlbumData = null;
 
     constructor(public http: Http, private _service: MusicianService) {
 
+    }
+
+    openAlbum(a: AlbumData): void {
+        if (a == this.curAlbum)
+            this.curAlbum = null;
+        else
+            this.curAlbum = a;
     }
 
     getMusicians(): void {
@@ -83,4 +91,18 @@ export interface TrackData {
     isListened: boolean;
     rating: number;
     album: AlbumData;
+}
+
+@Pipe({
+    name: 'filter'
+})
+
+export class FilterPipe implements PipeTransform {
+    transform(items: TrackData[], searchAlbum: AlbumData): TrackData[] {
+        if (!items) return [];
+        if (!searchAlbum) return items;
+        return items.filter(it => {
+            return it.album.id == searchAlbum.id;
+        });
+    }
 }

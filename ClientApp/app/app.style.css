@@ -26,7 +26,18 @@ h1 {
     border: 1px solid black;
 }
 
+.album {
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor:pointer;
+}
+
+    .album.active {
+        background-color: red;
+    }
+
 .track {
+    cursor:pointer;
     border-radius: 5px;
     padding: 5px;
     background-color: #fff;
