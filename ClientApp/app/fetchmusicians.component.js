@@ -23,8 +23,8 @@ let FetchEmployeeComponent = class FetchEmployeeComponent {
     }
     markAsListened(id) {
         var track = this.trkList.find(a => a.id == id);
-        if (track.isListented == false) {
-            track.isListented = true;
+        if (track.isListened == false) {
+            track.isListened = true;
             this._service.setListened(track);
         }
     }
