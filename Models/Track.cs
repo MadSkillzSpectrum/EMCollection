@@ -24,7 +24,7 @@ namespace EMCollection.Models
         public bool IsListened { get; set; }
         [JsonProperty("rating")]
         public decimal Rating { get; set; }
-        [JsonIgnore]
+        [JsonProperty("album")]
         public virtual Album Album { get; set; }
     }
 }

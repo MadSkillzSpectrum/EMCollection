@@ -20,7 +20,7 @@ namespace EMCollection.Models
         public int ReleaseYear { get; set; }
         [JsonProperty("tracks")]
         public virtual List<Track> Tracks { get; set; }
-        [JsonIgnore]
+        [JsonProperty("musician")]
         public virtual Musician Author { get; set; } //сделать List для коллабов?
     }
 }

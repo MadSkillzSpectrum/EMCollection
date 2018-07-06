@@ -18,8 +18,28 @@ let FetchEmployeeComponent = class FetchEmployeeComponent {
     getMusicians() {
         this._service.getMusiciansList().then(data => this.musList = data);
     }
+    getTracks() {
+        this._service.getTracksList().then(data => this.trkList = data);
+    }
+    markAsListened(id) {
+        this._service.setListened(id);
+        this.trkList.find(a => a.id == id).isListented = true;
+    }
+    markAsFavorite(id) {
+        this._service.setFavorite(id);
+        this.trkList.find(a => a.id == id).isFavorite = true;
+    }
+    like(id) {
+        this._service.setLike(id, 1);
+        this.trkList.find(a => a.id == id).rating = 1;
+    }
+    dislike(id) {
+        this._service.setLike(id, -1);
+        this.trkList.find(a => a.id == id).rating = -1;
+    }
     ngOnInit() {
         this.getMusicians();
+        this.getTracks();
     }
 };
 FetchEmployeeComponent = __decorate([

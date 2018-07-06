@@ -1,12 +1,14 @@
 ﻿<h2>Your collection:</h2>
 <div *ngIf="musList">
     <ul class="list-unstyled musicians">
-        <li class="row" *ngFor="let mus of musList">
-            <div class="col-6 text-left">
-                {{ mus.name }}, {{ mus.age }} y.o.
-            </div>
-            <div class="col-6 text-right">
-                Started in {{ mus.careerStartYear }}
+        <li *ngFor="let mus of musList">
+            <div class="musician row">
+                <div class="col-6 text-left">
+                    {{ mus.name }}, {{ mus.age }} y.o.
+                </div>
+                <div class="col-6 text-right">
+                    Started in {{ mus.careerStartYear }}
+                </div>
             </div>
             <div class="col-12">
                 <ul class="list-unstyled albums">
@@ -18,14 +20,12 @@
         </li>
     </ul>
 </div>
-<div>
+<div *ngIf="trkList">
     <ul class="list-unstyled">
-        <template *ngFor="let mus of musList">
-            <template *ngFor="let al of mus.albums">
-                <template *ngFor="let trk of al.tracks">
-                    <li class="row">{{ trk.name }} - {{ trk.duration}}</li>
-                </template>
-            </template>
-        </template>
+        <li *ngFor="let trk of trkList" class="row">
+            <div class="col-12">
+                {{ trk.name }} - {{ trk.duration}} <i class="fa-heart" (click)="markAsFavorite(trk.id)" [ngClass]="{'fas':trk.isFavorite==true, 'far':trk.isFavorite==false}"></i>
+            </div>
+        </li>
     </ul>
 </div>

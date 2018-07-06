@@ -1,6 +1,7 @@
 ﻿import { Component, Inject, OnInit } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { MusicianService } from './app.service'
+import { concat } from 'rxjs';
 
 @Component({
     selector: 'musicians',
@@ -9,6 +10,7 @@ import { MusicianService } from './app.service'
 
 export class FetchEmployeeComponent implements OnInit {
     public musList: MusicianData[];
+    public trkList: TrackData[];
 
     constructor(public http: Http, private _service: MusicianService) {
 
@@ -20,20 +22,35 @@ export class FetchEmployeeComponent implements OnInit {
         )
     }
 
-    markAsListened(id): void {
-
+    getTracks(): void {
+        this._service.getTracksList().then(
+            data => this.trkList = data
+        )
     }
 
-    markAsFavorite(id): void {
-
+    markAsListened(id: number): void {
+        this._service.setListened(id)
+        this.trkList.find(a => a.id == id).isListented = true;
     }
 
-    like(id): void {
+    markAsFavorite(id: number): void {
+        this._service.setFavorite(id);
+        this.trkList.find(a => a.id == id).isFavorite = true;
+    }
 
+    like(id:number): void {
+        this._service.setLike(id,1);
+        this.trkList.find(a => a.id == id).rating = 1;
+    }
+
+    dislike(id: number): void {
+        this._service.setLike(id, -1);
+        this.trkList.find(a => a.id == id).rating = -1;
     }
 
     ngOnInit() {
         this.getMusicians();
+        this.getTracks();
     }
 }
 
@@ -50,6 +67,7 @@ export interface AlbumData {
     name: string;
     releaseDate: number;
     tracks: TrackData[];
+    musician: MusicianData;
 }
 
 export interface TrackData {
@@ -59,4 +77,5 @@ export interface TrackData {
     isFavorite: boolean;
     isListented: boolean;
     rating: number;
+    album: AlbumData;
 }

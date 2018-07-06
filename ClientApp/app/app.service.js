@@ -18,13 +18,23 @@ import { Observable } from 'rxjs-compat';
 let MusicianService = class MusicianService {
     constructor(_http) {
         this._http = _http;
-        this.myAppUrl = "";
         this.myAppUrl = "http://localhost:49680/";
+        //this.myAppUrl = "";
     }
     getMusiciansList() {
         return this._http.get(this.myAppUrl + 'api/getMusicians').toPromise().then(response => { return response.json(); });
-        //.pipe(map((response: MusicianData) => response()))
-        //.pipe(catchError(this.errorHandler));
+    }
+    getTracksList() {
+        return this._http.get(this.myAppUrl + 'api/getTracks').toPromise().then(response => { return response.json(); });
+    }
+    setLike(id, like) {
+        return this._http.get(this.myAppUrl + 'api/like' + "/" + id).toPromise().then(response => { return response.json(); });
+    }
+    setListened(id) {
+        return this._http.get(this.myAppUrl + 'api/listen' + "/" + id).toPromise().then(response => { return response.json(); });
+    }
+    setFavorite(id) {
+        return this._http.get(this.myAppUrl + 'api/favorite' + "/" + id).toPromise().then(response => { return response.json(); });
     }
     errorHandler(error) {
         console.log(error);
