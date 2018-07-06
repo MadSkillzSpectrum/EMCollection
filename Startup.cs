@@ -23,6 +23,8 @@ namespace EMCollection
             services.AddDbContext<DbEntitiesContext>(options =>
                 options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
 
+            services.AddCors(options => options.AddPolicy("AllowAngularLocalHost", builder=> builder.WithOrigins("http://localhost:49680").AllowAnyMethod().AllowAnyHeader()));
+
             var serviceProvider = services.BuildServiceProvider();
 
             var context = serviceProvider.GetService<DbEntitiesContext>();
