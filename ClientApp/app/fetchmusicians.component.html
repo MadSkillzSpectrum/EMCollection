@@ -24,7 +24,7 @@
     <ul class="list-unstyled trackList">
         <li *ngFor="let trk of trkList" class="row">
             <div class="col-12 track">
-                <i class="fa-fw fa-play-circle" (click)="markAsListened(trk.id)" [ngClass]="{'fas':trk.isListented==true, 'far':trk.isListented==false}"></i>
+                <i class="fa-fw fa-play-circle" (click)="markAsListened(trk.id)" [ngClass]="{'fas':trk.isListened==true, 'far':trk.isListened==false}"></i>
                 <span>{{ trk.name }} - {{ trk.duration}}</span>
                 <i class="fa-fw fa-heart" (click)="markAsFavorite(trk.id)" [ngClass]="{'fas':trk.isFavorite==true, 'far':trk.isFavorite==false}"></i>
                 <i class="fa-fw fa-thumbs-down" (click)="dislike(trk.id)" [ngClass]="{'fas':trk.rating==-1, 'far':trk.rating!=-1}"></i>
