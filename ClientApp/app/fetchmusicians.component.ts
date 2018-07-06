@@ -30,10 +30,8 @@ export class FetchEmployeeComponent implements OnInit {
 
     markAsListened(id: number): void {
         var track = this.trkList.find(a => a.id == id);
-        if (track.isListented == false) {
-            track.isListented = true;
-            this._service.setListened(track);
-        }
+        track.isListented = true;
+        this._service.setListened(track);
     }
 
     markAsFavorite(id: number): void {
