@@ -15,21 +15,18 @@ h1 {
     margin: 30px auto;
 }
 
-.musician, .musicians {
+.musician {
     border: 2px solid black;
     border-radius: 5px;
     padding: 5px;
     background-color: #fff;
 }
 
-.musicians {
-    border: 1px solid black;
-}
-
 .album {
     border: 1px solid black;
     border-radius: 5px;
-    cursor:pointer;
+    cursor: pointer;
+    background-color: #fff;
 }
 
     .album.active {

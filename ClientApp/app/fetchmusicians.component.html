@@ -1,17 +1,19 @@
 ﻿<h2>Your collection:</h2>
 <div class="row" *ngIf="musList">
-    <ul class="list-unstyled musicians">
-        <li class="col-12" *ngFor="let mus of musList">
-            <div class="musician row">
-                <div class="col-6 text-left">
-                    {{ mus.name }}, {{ mus.age }} y.o.
-                </div>
-                <div class="col-6 text-right">
-                    Started in {{ mus.careerStartYear }}
+    <ul class="list-unstyled musicians col-12">
+        <li class="row" *ngFor="let mus of musList">
+            <div class="musician col-12">
+                <div class="row">
+                    <div class="col-6 text-left">
+                        {{ mus.name }}, {{ mus.age }} y.o.
+                    </div>
+                    <div class="col-6 text-right">
+                        Started in {{ mus.careerStartYear }}
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <ul class="list-unstyled albums">
+            <div class="col-12">
+                <ul class="list-unstyled albums row">
                     <li class="col-12 album" *ngFor="let al of mus.albums" [ngClass]="{'active':curAlbum!=null && al.id==curAlbum.id}">
                         <div (click)="openAlbum(al)" class="text-left col-12" >{{ al.name }} <span title="Release date">({{al.releaseYear}})</span></div>
                     </li>
