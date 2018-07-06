@@ -1,5 +1,5 @@
 ﻿import { Injectable, Inject } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import 'rxjs-compat/add/observable/of';
 import 'rxjs-compat/add/operator/map';
 import 'rxjs-compat/add/operator/toPromise';
@@ -26,16 +26,16 @@ export class MusicianService {
         return this._http.get(this.myAppUrl + 'api/getTracks').toPromise().then(response => { return response.json() });
     }
 
-    public setLike(id:number, like:number): Promise<number> {
-        return this._http.post(this.myAppUrl + 'api/like/', id ).toPromise().then(response => { return response.json() });
+    public setLike(track:TrackData): Promise<number> {
+        return this._http.put(this.myAppUrl + 'api/like/', track).toPromise().then(response => { return response.json() });
     }
 
-    public setListened(id: number): Promise<number> {
-        return this._http.post(this.myAppUrl + 'api/listen/', id).toPromise().then(response => { return response.json() });
+    public setListened(track: TrackData): Promise<number> {
+        return this._http.put(this.myAppUrl + 'api/listen/', track).toPromise().then(response => { return response.json() });
     }
 
-    public setFavorite(id: number): Promise<number> {
-        return this._http.post(this.myAppUrl + 'api/favorite/', id).toPromise().then(response => { return response.json() });
+    public setFavorite(track:TrackData): Promise<number> {
+        return this._http.put(this.myAppUrl + 'api/favorite/', track).toPromise().then(response => { return response.json() });
     }
 
     errorHandler(error: Response) {

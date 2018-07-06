@@ -41,33 +41,33 @@ namespace EMCollection.Controllers
             });
         }
 
-        [HttpPost("{id}")]
+        [HttpPut)]
         [Route("api/like")]
-        public string Like(int id, int like)
+        public string Like([FromBody] Track track)
         {
-            var track = _context.Tracks.FirstOrDefault(a => a.Id == id);
-            track.Rating = Math.Sign(like); //rating is number in json file so decided to use 1 and -1 as like an dislike (possible sum featere)
+            var t = _context.Tracks.FirstOrDefault(a => a.Id == track.Id); //use find to get last changes
+            t.Rating = track.Rating; //rating is number in json file so decided to use 1 and -1 as like an dislike (possible sum featere)
             _context.SaveChanges();
             return JsonConvert.SerializeObject(1);
         }
 
 
-        [HttpPost("{id}")]
+        [HttpPut]
         [Route("api/favorite")]
-        public string Favorite(int id)
+        public string Favorite([FromBody] Track track)
         {
-            var track = _context.Tracks.FirstOrDefault(a => a.Id == id);
-            track.IsFavorite = !track.IsFavorite;
+            var t = _context.Tracks.FirstOrDefault(a => a.Id == track.Id);
+            t.IsFavorite = track.IsFavorite;
             _context.SaveChanges();
             return JsonConvert.SerializeObject(1);
         }
 
-        [HttpPost("{id}")]
+        [HttpPut]
         [Route("api/listen")]
-        public string Listen(int id)
+        public string Listen([FromBody] Track track)
         {
-            var track = _context.Tracks.FirstOrDefault(a => a.Id == id);
-            track.IsListened = !track.IsListened;
+            var t = _context.Tracks.FirstOrDefault(a => a.Id == track.Id);
+            t.IsListened = track.IsListened;
             _context.SaveChanges();
             return JsonConvert.SerializeObject(1);
         }

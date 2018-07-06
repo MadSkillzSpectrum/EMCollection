@@ -26,8 +26,9 @@ let FetchEmployeeComponent = class FetchEmployeeComponent {
         this.trkList.find(a => a.id == id).isListented = true;
     }
     markAsFavorite(id) {
-        this._service.setFavorite(id);
-        this.trkList.find(a => a.id == id).isFavorite = true;
+        var track = this.trkList.find(a => a.id == id);
+        this._service.setFavorite(track);
+        track.isFavorite = !track.isFavorite;
     }
     like(id) {
         this._service.setLike(id, 1);

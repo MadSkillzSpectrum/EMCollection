@@ -28,13 +28,13 @@ let MusicianService = class MusicianService {
         return this._http.get(this.myAppUrl + 'api/getTracks').toPromise().then(response => { return response.json(); });
     }
     setLike(id, like) {
-        return this._http.post(this.myAppUrl + 'api/like/', id).toPromise().then(response => { return response.json(); });
+        return this._http.post(this.myAppUrl + 'api/like/', JSON.stringify([id, like])).toPromise().then(response => { return response.json(); });
     }
     setListened(id) {
-        return this._http.post(this.myAppUrl + 'api/listen/', id).toPromise().then(response => { return response.json(); });
+        return this._http.post(this.myAppUrl + 'api/listen/', JSON.stringify([id])).toPromise().then(response => { return response.json(); });
     }
-    setFavorite(id) {
-        return this._http.post(this.myAppUrl + 'api/favorite/', id).toPromise().then(response => { return response.json(); });
+    setFavorite(track) {
+        return this._http.put(this.myAppUrl + 'api/favorite/', track).toPromise().then(response => { return response.json(); });
     }
     errorHandler(error) {
         console.log(error);

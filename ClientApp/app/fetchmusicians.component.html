@@ -21,10 +21,12 @@
     </ul>
 </div>
 <div *ngIf="trkList">
-    <ul class="list-unstyled">
+    <ul class="list-unstyled trackList">
         <li *ngFor="let trk of trkList" class="row">
-            <div class="col-12">
-                {{ trk.name }} - {{ trk.duration}} <i class="fa-heart" (click)="markAsFavorite(trk.id)" [ngClass]="{'fas':trk.isFavorite==true, 'far':trk.isFavorite==false}"></i>
+            <div class="col-12 track">
+                <i class="fa-fw fa-heart" (click)="markAsFavorite(trk.id)" [ngClass]="{'fas':trk.isFavorite==true, 'far':trk.isFavorite==false}"></i>
+                {{ trk.name }} - {{ trk.duration}}
+                <i class="fa-fw fa-heart" (click)="markAsFavorite(trk.id)" [ngClass]="{'fas':trk.isFavorite==true, 'far':trk.isFavorite==false}"></i>
             </div>
         </li>
     </ul>

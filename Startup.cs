@@ -38,7 +38,10 @@ namespace EMCollection
                 context.Musicians.Clear();
             context.SaveChanges();
 
-
+            /*DEV ONLY*/
+            /*
+             Workaround caused by deserializeObject usage. We don't need to use identity db option, but can't use jsonIngore attr in modal
+            */
             RootObject r = JsonConvert.DeserializeObject<RootObject>(System.IO.File.ReadAllText(@"data sample.json"));
             foreach (var a in r.Musicians)
             {
