@@ -80,7 +80,7 @@ export interface TrackData {
     name: string;
     duration: string;
     isFavorite: boolean;
-    isListented: boolean;
+    isListened: boolean;
     rating: number;
     album: AlbumData;
 }
