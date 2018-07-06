@@ -41,7 +41,7 @@ namespace EMCollection.Controllers
             });
         }
 
-        [HttpPut)]
+        [HttpPut]
         [Route("api/like")]
         public string Like([FromBody] Track track)
         {

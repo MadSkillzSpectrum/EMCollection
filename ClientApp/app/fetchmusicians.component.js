@@ -22,21 +22,27 @@ let FetchEmployeeComponent = class FetchEmployeeComponent {
         this._service.getTracksList().then(data => this.trkList = data);
     }
     markAsListened(id) {
-        this._service.setListened(id);
-        this.trkList.find(a => a.id == id).isListented = true;
+        var track = this.trkList.find(a => a.id == id);
+        if (track.isListented == false) {
+            track.isListented = true;
+            this._service.setListened(track);
+        }
     }
     markAsFavorite(id) {
         var track = this.trkList.find(a => a.id == id);
-        this._service.setFavorite(track);
         track.isFavorite = !track.isFavorite;
+        this._service.setFavorite(track);
+        //TODO: should I return actual db value and use it as a new value?
     }
     like(id) {
-        this._service.setLike(id, 1);
-        this.trkList.find(a => a.id == id).rating = 1;
+        var track = this.trkList.find(a => a.id == id);
+        track.rating = 1;
+        this._service.setLike(track);
     }
     dislike(id) {
-        this._service.setLike(id, -1);
-        this.trkList.find(a => a.id == id).rating = -1;
+        var track = this.trkList.find(a => a.id == id);
+        track.rating = -1;
+        this._service.setLike(track);
     }
     ngOnInit() {
         this.getMusicians();
